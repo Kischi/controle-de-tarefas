@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle de tarefas</title>
+  <link rel="stylesheet" href="/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-marca">
+      <h1 id="titulo">Controle de tarefas</h1>
+      <p id="resumo" class="resumo" aria-live="polite"></p>
+    </div>
+    <div class="topo-controles" role="search">
+      <label class="campo-busca">
+        <span class="oculto">Buscar nas tarefas e nos prompts</span>
+        <input id="busca" type="search" placeholder="Buscar tarefas e prompts" autocomplete="off" spellcheck="false">
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+      <label class="campo-filtro">
+        <span class="oculto">Filtrar por modelo</span>
+        <select id="f-modelo">
+          <option value="todos">Todos os modelos</option>
+        </select>
+      </label>
+      <label class="campo-filtro">
+        <span class="oculto">Filtrar por situação</span>
+        <select id="f-situacao">
+          <option value="todas">Todas as situações</option>
+          <option value="pendente">Pendentes</option>
+          <option value="sugestao">Sugestões</option>
+          <option value="parte">Feitas em parte</option>
+          <option value="feito">Feitas</option>
+        </select>
+      </label>
+      <div class="grupo-botoes">
+        <button type="button" class="botao" data-acao="expandir-tudo">Expandir tudo</button>
+        <button type="button" class="botao" data-acao="recolher-tudo">Recolher tudo</button>
+        <button type="button" class="botao" data-acao="conferir-feitas" title="Leva à última seção o que já foi feito">Conferir feitas</button>
+        <button type="button" class="botao botao-forte" data-acao="nova-tarefa">Nova tarefa</button>
+        <button type="button" id="pilula" class="pilula" data-acao="abrir-trabalho" hidden></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="miolo">
+    <nav id="lateral" class="lateral" aria-label="Seções da lista"></nav>
+    <main id="lista" class="lista" aria-busy="true">
+      <p class="carregando">Abrindo a lista…</p>
+    </main>
+  </div>
+
+  <footer class="rodape">
+    <span id="arquivo"></span>
+    <span>Arraste uma tarefa para mudar a ordem ou a seção.</span>
+  </footer>
+
+  <dialog id="janela" class="janela" aria-labelledby="janela-titulo"><div id="janela-conteudo"></div></dialog>
+  <div id="avisos" class="avisos" role="status" aria-live="polite"></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
